@@ -14,11 +14,11 @@ test('/wallpaper honu sets the lagoon behind the chat, and the backdrop draws it
   const res = await $.command.run({ command: 'wallpaper', args: 'honu' } as never)
   expect(JSON.stringify(res)).toContain('Honu Lagoon is on.')
   const set = sets.at(-1) as { backdrop: { scene: string; glass: { blur: number } }; overrideColorScheme: string; colors: object }
-  expect(set.backdrop.scene).toBe('aw-honu-3')
+  expect(set.backdrop.scene).toBe('aw-honu-4')
   expect(set.backdrop.glass.blur).toBe(22)
   expect(set.overrideColorScheme).toBe('dark')
 
-  const ui = await $.ui.mount({ plugin: 'ascii-wallpapers', component: 'Backdrop', requestId: 'b', surface: 'desktop', props: { scene: 'aw-honu-3', plugin: 'ascii-wallpapers', glass: false } })
+  const ui = await $.ui.mount({ plugin: 'ascii-wallpapers', component: 'Backdrop', requestId: 'b', surface: 'desktop', props: { scene: 'aw-honu-4', plugin: 'ascii-wallpapers', glass: false } })
   const svg = await ui.find({ type: 'Svg' })
   const source = String((svg as { props?: { source?: string } } | undefined)?.props?.source ?? '')
   expect(source.startsWith('<svg')).toBe(true)

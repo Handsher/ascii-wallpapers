@@ -10,7 +10,7 @@ import { CARDS, SCENES } from './scenes.js'
 
 const PLUGIN = 'ascii-wallpapers'
 // bumped with each rebuild of scenes.js: a new scene name makes the app draw the new picture, not one it kept
-const BUILD = 3
+const BUILD = 4
 type Tone = 'dark' | 'light'
 type Wall = { key: keyof typeof SCENES; name: string; tone: Tone; acc: string; alt: string }
 
