@@ -10,6 +10,8 @@ From the concept film on X: https://x.com/handsher_NGU/status/212139904456001574
 
 ## Install
 
+Needs Claude Code 2.1.325 or later (`claude --version`; `claude update` to get it). The wallpapers draw in the **Code tab of Claude Desktop** (and the mobile app), not in a terminal.
+
 At the prompt of a terminal session of Claude Code:
 
 ```
@@ -39,7 +41,7 @@ Then start a new session in the Code tab of Claude Desktop.
 
 - Wallpapers draw in Claude Desktop (and the mobile app); the terminal keeps its own look.
 - One theme at a time: turn off any other plugin that sets a theme.
-- Needs a Claude Code version whose desktop app draws plugin backdrops (2.1.325 or later).
+- On an older Claude Code, `/wallpaper` says to update instead of failing.
 - The scenes are SVG with SMIL motion, generated from the concept film's own scene code.
 
 ## Remove

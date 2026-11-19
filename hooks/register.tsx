@@ -59,20 +59,24 @@ function crabSvg(hop: number): string {
     + `</style><g class="c" transform="translate(0 16)">${cells(BODY, 0)}<g class="l1">${cells([LEGS[0]], 8)}</g><g class="l2">${cells([LEGS[1]], 8)}</g></g>${sparks}<rect x="8" y="53" width="48" height="2" fill="#000" opacity=".25"/></svg>`
 }
 
+// Claude Code before 2.1.325 has no theme API, so its calls throw a TypeError: answer with what to do instead
+const NEEDS = 'ASCII Wallpapers needs Claude Code 2.1.325 or later: run `claude update` (or update Claude Desktop), then start a new session.'
+
 async function apply($: EngineInterface, key: string | null, hop = true) {
   const w = WALLS.find(x => x.key === key)
   if (!w) {
-    await $.theme.clear()
+    try { await $.theme.clear() } catch (err) { if (err instanceof TypeError) return NEEDS; throw err }
     await update($, current, () => null)
     await $.store.set('wall', null)
     return 'Wallpaper off.'
   }
-  const set = await $.theme.set(lookOf(w))
+  let set
+  try { set = await $.theme.set(lookOf(w)) } catch (err) { if (err instanceof TypeError) return NEEDS; throw err }
   await update($, current, () => w.key)
   await $.store.set('wall', w.key)
   if (hop) await update($, hops, n => n + 1)
   $.ui.status(set.isDrawn ? undefined : `${w.name}: ${set.reason}`)
-  return set.isDrawn ? `${w.name} is on.` : `${w.name} is set, but this window doesn't draw wallpapers: ${set.reason}`
+  return set.isDrawn ? `${w.name} is on.` : `${w.name} is set. Wallpapers draw in the Code tab of Claude Desktop, not in a terminal (${set.reason}).`
 }
 
 export const register: Register = on => {
