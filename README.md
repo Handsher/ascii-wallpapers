@@ -1,5 +1,7 @@
 # ASCII Wallpapers for Claude Code
 
+[![Featured on Agent Skins](https://agentskins.app/badge/creator/marko-vineli.svg)](https://agentskins.app/creators/marko-vineli)
+
 Eight live ASCII wallpapers behind the chat in Claude Desktop. Each scene is painted in character cells that shimmer and move, and the window's panels turn to frosted glass over it, so the chat stays easy to read.
 
 ![The eight wallpapers](assets/preview.jpg)
